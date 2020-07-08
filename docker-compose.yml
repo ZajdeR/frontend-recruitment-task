@@ -1,0 +1,16 @@
+version: '3'
+services:
+  node:
+    build: .
+    env_file:
+    - ".env"
+    container_name: ${PROJECT_NAME}_frontend
+    environment:
+    - TARGET_DOMAIN=${TARGET_DOMAIN}
+    volumes:
+      - ./src:/home/node/app/src:delegated
+    ports:
+    - ${PORT}:3000
+    expose:
+    - ${PORT}
+    command: [ "npm", "start" ]
