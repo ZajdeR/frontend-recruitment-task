@@ -25,7 +25,7 @@ http://localhost:3000/internal/courier-u/initialize
 
 ### 2. Operators list 
 
-Create a second form with operators list:
+Create a second form with operators list. **(The layout design below is optional. For this task is important to implement logic)**
 ![form](/imgs/operators.png)
 
 To fetch operators
