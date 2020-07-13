@@ -16,7 +16,7 @@ To stop run:
 
 ## To do
 ### 1. Address zip code field
-Create a first form which emulates behaviour shown below: 
+Create the first form which emulates behaviour shown below: 
 ![form](/imgs/form.gif)
 
 To fetch countries & validation rules use this method :
@@ -25,7 +25,7 @@ http://localhost:3000/internal/courier-u/initialize
 
 ### 2. Operators list 
 
-Create a second form with operators list. **(The layout design below is optional. For this task is important to implement logic)**
+Create the second form with operators list. **(The layout design below is optional. For this task is important to implement logic)**
 ![form](/imgs/operators.png)
 
 To fetch operators
@@ -61,4 +61,4 @@ This form shouldn’t fire any requests, just a markup.
 ## Submitting
 The result is accepted as a *pull request in the fork* of this repository.
 
-*Good luck! If you have any questions feel free to ping us!*
+*Good luck! If you have any questions, feel free to ping us!*
