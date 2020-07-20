@@ -7,11 +7,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     countries: null,
-    validationRules: null
+    validationRules: null,
+    selectedCountry: null
   },
   mutations: {
     SET_COUNTRIES: (state, payload) => {
       state.countries = payload;
+      state.selectedCountry = payload[0];
     },
     SET_VALIDATION_RULES: (state, payload) => {
       state.validationRules = payload;
