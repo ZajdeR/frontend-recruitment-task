@@ -3,11 +3,18 @@
 </template>
 
 <script>
+  import {mapActions} from "vuex";
+
   export default {
-    name: "FieldZipCode"
+    name: "FieldZipCode",
+    created() {
+      this.fetchCountries();
+    },
+    methods: {
+      ...mapActions([
+        'fetchCountries'
+      ])
+    },
   };
 </script>
 
-<style scoped lang="scss">
-
-</style>
