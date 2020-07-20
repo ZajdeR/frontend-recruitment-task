@@ -1,3 +1,14 @@
 {
-
+  "MENU": {
+    "BUTTON": {
+      "0": "Home",
+      "1": "Address zip code field",
+      "2": "Operators list",
+      "3": "Login form"
+    }
+  },
+  "SELECT_TASK": {
+    "H1": "Hi, select task",
+    "DESC": "I prepared simple layout to navigate between tasks and switch language"
+  }
 }

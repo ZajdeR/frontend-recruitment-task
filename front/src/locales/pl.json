@@ -1,3 +1,14 @@
 {
-
+  "MENU": {
+    "BUTTON": {
+      "0": "Strona główna",
+      "1": "Pole na kod pocztowy",
+      "2": "Lista operatorów",
+      "3": "Formularz logowania"
+    }
+  },
+  "SELECT_TASK": {
+    "H1": "Witaj, wybierz zadanie",
+    "DESC": "Przygotowałem prosty layout do przełączania się pomiędzy zadaniami i zmiany języka"
+  }
 }
