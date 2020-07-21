@@ -18,5 +18,10 @@
   "LABEL_TO": "Dostawa do:",
   "REQUIRED_FIELD": "Pole jest wymagane",
   "INVALID_FORMAT": "Wpisz poprawny kod pocztowy",
-  "HINT": "Format {format}"
+  "HINT": "Format {format}",
+  "RULES_LIST": "Lista dozwolonych reguł:",
+  "RULES_DESCRIPTION": "gdzie:",
+  "RULES_DESCRIPTION_1": "\\N - Cyfra",
+  "RULES_DESCRIPTION_2": "\\A - Litera",
+  "RULES_FOOTER": "Szczegółowy opis wszystkich symboli i reguł można znaleźć w internecie."
 }

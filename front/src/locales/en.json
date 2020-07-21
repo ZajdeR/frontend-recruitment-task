@@ -18,5 +18,10 @@
   "LABEL_TO": "Delivery to:",
   "REQUIRED_FIELD": "Field is required",
   "INVALID_FORMAT": "Enter valid zip code",
-  "HINT": "Format {format}"
+  "HINT": "Format {format}",
+  "RULES_LIST": "List of the allowed rules:",
+  "RULES_DESCRIPTION": "where:",
+  "RULES_DESCRIPTION_1": "\\N - Number",
+  "RULES_DESCRIPTION_2": "\\A - Letter",
+  "RULES_FOOTER": "A detailed description of all symbols and rules can be found on the Internet."
 }

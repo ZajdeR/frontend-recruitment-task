@@ -25,8 +25,9 @@
           <input-zip-code v-model="zipCodeTo" :hint="hintTo" :rules="zipCodeRuleTo" />
         </v-col>
 
-        <v-col cols="1" class="d-flex justify-center">
-          <v-icon>far fa-question-circle</v-icon>
+        <v-col v-if="!valid" cols="1">
+          <v-subheader />
+          <tooltip-delivery-form v-if="ruleTo" :rules="ruleTo.message" />
         </v-col>
       </v-row>
     </v-container>
@@ -38,12 +39,13 @@
   import BaseLoader from "@/components/BaseLoader";
   import SelectCountry from "@/components/SelectCountry";
   import InputZipCode from "@/components/InputZipCode";
+  import TooltipDeliveryForm from "@/components/TooltipDeliveryForm";
 
   export default {
     name: "FormDelivery",
-    components: {InputZipCode, SelectCountry, BaseLoader},
+    components: {TooltipDeliveryForm, InputZipCode, SelectCountry, BaseLoader},
     data: () => ({
-      valid: false,
+      valid: true,
 
     }),
     computed: {
@@ -51,8 +53,8 @@
         'isLoading',
       ]),
       ...mapGetters([
-          'ruleFrom',
-          'ruleTo'
+        'ruleFrom',
+        'ruleTo'
       ]),
       selectedCountryFrom: {
         get() {
@@ -103,13 +105,13 @@
       zipCodeRuleFrom() {
         return [
           v => !!v || this.$t('REQUIRED_FIELD'),
-          v => v && new RegExp(this.ruleFrom.regexp).test(v) || this.$t('INVALID_FORMAT'),
+          v => this.ruleFrom && v && new RegExp(this.ruleFrom.regexp).test(v) || this.$t('INVALID_FORMAT'),
         ];
       },
       zipCodeRuleTo() {
         return [
           v => !!v || this.$t('REQUIRED_FIELD'),
-          v => v && new RegExp(this.ruleTo.regexp).test(v)  || this.$t('INVALID_FORMAT'),
+          v => this.ruleTo && v && new RegExp(this.ruleTo.regexp).test(v) || this.$t('INVALID_FORMAT'),
         ];
       }
     },
