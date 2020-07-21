@@ -1,38 +1,40 @@
 <template>
-  <v-container fluid>
-    <base-loader v-if="isLoading" />
-    <v-row v-else>
-      <v-col cols="2">
-        <v-subheader class="pa-0">
-          {{ $t('LABEL_FROM') }}
-        </v-subheader>
-        <select-country v-model="selectedCountryFrom" />
-      </v-col>
-      <v-col cols="2">
-        <v-subheader />
-        <input-zip-code v-model="zipCodeTo" :hint="hintFrom" />
-      </v-col>
+  <v-form v-model="valid">
+    <v-container fluid>
+      <base-loader v-if="isLoading" />
+      <v-row v-else>
+        <v-col cols="2">
+          <v-subheader class="pa-0">
+            {{ $t('LABEL_FROM') }}
+          </v-subheader>
+          <select-country v-model="selectedCountryFrom" />
+        </v-col>
+        <v-col cols="2">
+          <v-subheader />
+          <input-zip-code v-model="zipCodeFrom" :hint="hintFrom" :rules="zipCodeRuleFrom" />
+        </v-col>
 
-      <v-col cols="2">
-        <v-subheader class="pa-0">
-          {{ $t('LABEL_TO') }}
-        </v-subheader>
-        <select-country v-model="selectedCountryTo" />
-      </v-col>
-      <v-col cols="2">
-        <v-subheader />
-        <input-zip-code v-model="zipCodeTo" :hint="hintTo" />
-      </v-col>
+        <v-col cols="2">
+          <v-subheader class="pa-0">
+            {{ $t('LABEL_TO') }}
+          </v-subheader>
+          <select-country v-model="selectedCountryTo" />
+        </v-col>
+        <v-col cols="2">
+          <v-subheader />
+          <input-zip-code v-model="zipCodeTo" :hint="hintTo" :rules="zipCodeRuleTo" />
+        </v-col>
 
-      <v-col cols="1" class="d-flex justify-center">
-        <v-icon>far fa-question-circle</v-icon>
-      </v-col>
-    </v-row>
-  </v-container>
+        <v-col cols="1" class="d-flex justify-center">
+          <v-icon>far fa-question-circle</v-icon>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
 </template>
 
 <script>
-  import {mapActions, mapState} from "vuex";
+  import {mapActions, mapGetters, mapState} from "vuex";
   import BaseLoader from "@/components/BaseLoader";
   import SelectCountry from "@/components/SelectCountry";
   import InputZipCode from "@/components/InputZipCode";
@@ -40,11 +42,17 @@
   export default {
     name: "FormDelivery",
     components: {InputZipCode, SelectCountry, BaseLoader},
+    data: () => ({
+      valid: false,
+
+    }),
     computed: {
       ...mapState([
         'isLoading',
-        'hintFrom',
-        'hintTo'
+      ]),
+      ...mapGetters([
+          'ruleFrom',
+          'ruleTo'
       ]),
       selectedCountryFrom: {
         get() {
@@ -77,6 +85,32 @@
         set(value) {
           this.$store.commit('SET_ZIP_CODE_TO', value);
         }
+      },
+      hintFrom() {
+        if (!this.ruleFrom || !this.ruleFrom.message || this.ruleFrom.message.length === 0) {
+          return null;
+        }
+
+        return this.ruleFrom.message[0].split('\\N').join('X');
+      },
+      hintTo() {
+        if (!this.ruleTo || !this.ruleTo.message || this.ruleTo.message.length === 0) {
+          return null;
+        }
+
+        return this.ruleTo.message[0].split('\\N').join('X');
+      },
+      zipCodeRuleFrom() {
+        return [
+          v => !!v || this.$t('REQUIRED_FIELD'),
+          v => v && new RegExp(this.ruleFrom.regexp).test(v) || this.$t('INVALID_FORMAT'),
+        ];
+      },
+      zipCodeRuleTo() {
+        return [
+          v => !!v || this.$t('REQUIRED_FIELD'),
+          v => v && new RegExp(this.ruleTo.regexp).test(v)  || this.$t('INVALID_FORMAT'),
+        ];
       }
     },
     async created() {

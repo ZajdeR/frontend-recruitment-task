@@ -15,5 +15,8 @@
   "ZIP_CODE": "Zip code",
   "LOADING": "LOADING...",
   "LABEL_FROM": "Sending from:",
-  "LABEL_TO": "Delivery to:"
+  "LABEL_TO": "Delivery to:",
+  "REQUIRED_FIELD": "Field is required",
+  "INVALID_FORMAT": "Enter valid zip code",
+  "HINT": "Format {format}"
 }

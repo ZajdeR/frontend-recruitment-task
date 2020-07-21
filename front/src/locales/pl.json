@@ -15,5 +15,8 @@
   "ZIP_CODE": "Kod pocztowy",
   "LOADING": "Ładowanie...",
   "LABEL_FROM": "Nadanie z:",
-  "LABEL_TO": "Dostawa do:"
+  "LABEL_TO": "Dostawa do:",
+  "REQUIRED_FIELD": "Pole jest wymagane",
+  "INVALID_FORMAT": "Wpisz poprawny kod pocztowy",
+  "HINT": "Format {format}"
 }

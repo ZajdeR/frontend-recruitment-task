@@ -13,8 +13,6 @@ export default new Vuex.Store({
     zipCodeFrom: null,
     zipCodeTo: null,
     isLoading: false,
-    hintFrom: null,
-    hintTo: null
   },
   mutations: {
     SET_COUNTRIES: (state, payload) => {
@@ -54,4 +52,20 @@ export default new Vuex.Store({
       });
     }
   },
+  getters: {
+    ruleFrom: state => {
+      if (!state.selectedCountryFrom) {
+        return null;
+      }
+
+      return state.validationRules[state.selectedCountryFrom];
+    },
+    ruleTo: state => {
+      if (!state.selectedCountryTo) {
+        return null;
+      }
+
+      return state.validationRules[state.selectedCountryTo];
+    },
+  }
 });

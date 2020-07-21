@@ -1,7 +1,9 @@
 <template>
   <v-text-field
+    :value="zipCode"
+    :rules="rules"
     :label="$t('ZIP_CODE')"
-    :hint="hint"
+    :hint="!hint ? hint : $t('HINT', {format: hint})"
     persistent-hint
     outlined
     class="required"
@@ -20,6 +22,10 @@
       hint: {
         type: String,
         default: null
+      },
+      rules: {
+        type: Array,
+        default: () => ([])
       }
     },
     methods: {
