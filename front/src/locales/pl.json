@@ -10,5 +10,10 @@
   "SELECT_TASK": {
     "H1": "Witaj, wybierz zadanie",
     "DESC": "Przygotowałem prosty layout do przełączania się pomiędzy zadaniami i zmiany języka"
-  }
+  },
+  "COUNTRY": "Kraj",
+  "ZIP_CODE": "Kod pocztowy",
+  "LOADING": "Ładowanie...",
+  "LABEL_FROM": "Nadanie z:",
+  "LABEL_TO": "Dostawa do:"
 }

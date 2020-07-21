@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import FieldZipCode from "@/views/FieldZipCode";
+import FormDelivery from "@/views/FormDelivery";
 import ListOperators from "@/views/ListOperators";
 import FormLogin from "@/views/FormLogin";
 
@@ -10,8 +10,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/task/1",
-    name: "FieldZipCode",
-    component: FieldZipCode
+    name: "FormDelivery",
+    component: FormDelivery
   },
   {
     path: "/task/2",

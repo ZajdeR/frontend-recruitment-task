@@ -17,3 +17,10 @@
 
   };
 </script>
+
+<style lang="scss">
+  .required .v-label::after {
+    content: " *";
+    color: red;
+  }
+</style>

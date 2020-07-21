@@ -10,5 +10,10 @@
   "SELECT_TASK": {
     "H1": "Hi, select task",
     "DESC": "I prepared simple layout to navigate between tasks and switch language"
-  }
+  },
+  "COUNTRY": "Country",
+  "ZIP_CODE": "Zip code",
+  "LOADING": "LOADING...",
+  "LABEL_FROM": "Sending from:",
+  "LABEL_TO": "Delivery to:"
 }
