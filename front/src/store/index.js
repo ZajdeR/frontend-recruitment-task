@@ -13,6 +13,9 @@ export default new Vuex.Store({
     zipCodeFrom: null,
     zipCodeTo: null,
     isLoading: false,
+    // ===============
+    operators: [],
+    sort: null,
   },
   mutations: {
     SET_COUNTRIES: (state, payload) => {
@@ -35,6 +38,16 @@ export default new Vuex.Store({
     },
     SET_LOADING: (state, payload) => {
       state.isLoading = payload;
+    },
+    SET_OPERATORS: (state, payload) => {
+      state.operators = payload;
+    },
+    SET_OPERATOR_PRICES: (state, payload) => {
+      state.operators = state.operators.map(o => {
+        if (o.id === payload.operatorId) {
+          o.prices = payload.prices;
+        }
+      });
     }
   },
   actions: {
@@ -49,6 +62,25 @@ export default new Vuex.Store({
         Vue.toasted(error);
       }).finally(() => {
         commit('SET_LOADING', false);
+      });
+    },
+    fetchOperators: ({commit}) => {
+      commit('SET_LOADING', true);
+      MainApi.fetchOperators('PL', 'PL', 1, 10, 10, 10).then(response => {
+        if (response.data) {
+          commit('SET_OPERATORS', response.data);
+        }
+      }).catch(error => {
+        Vue.toasted(error);
+      }).finally(() => {
+        commit('SET_LOADING', false);
+      });
+    },
+    fetchOperatorPrices: ({commit}, operatorId) => {
+      MainApi.fetchOperatorPrices(operatorId, 'PL', 'PL', 2, 2, 3, 4, '51-180', 1).then(response => {
+        if (response.data) {
+          commit('SET_OPERATOR_PRICES', {operatorId, prices: response.data});
+        }
       });
     }
   },
